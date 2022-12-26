@@ -169,9 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af6c808a23ce7204a8cfffff12ab8d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthView: {fileID: 1909590120}
-  _healthButton: {fileID: 480348030}
-  _damageButton: {fileID: 1966240324}
   _healthAmount: 100
 --- !u!212 &166837180
 SpriteRenderer:
@@ -308,7 +305,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 480348031}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 166837179}
+        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+        m_MethodName: AddHealth
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &480348031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1172,7 +1181,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1966240325}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 166837179}
+        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+        m_MethodName: AddDamage
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1966240325
 MonoBehaviour:
   m_ObjectHideFlags: 0
