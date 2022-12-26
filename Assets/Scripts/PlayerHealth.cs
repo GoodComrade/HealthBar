@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private float _healthAmount;
 
-    public UnityAction OnHealthChanged;
+    public event UnityAction HealthChanged;
 
     private float _maxHealth;
 
@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
         if (_healthAmount > _maxHealth)
             _healthAmount = _maxHealth;
 
-        OnHealthChanged?.Invoke();
+        HealthChanged?.Invoke();
     }
 
     public void AddDamage(float valueToChange)
@@ -38,6 +38,6 @@ public class PlayerHealth : MonoBehaviour
         if (_healthAmount < 0)
             _healthAmount = 0;
 
-        OnHealthChanged?.Invoke();
+        HealthChanged?.Invoke();
     }
 }

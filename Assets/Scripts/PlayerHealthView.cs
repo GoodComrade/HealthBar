@@ -7,7 +7,9 @@ using UnityEngine.UI;
 public class PlayerHealthView : MonoBehaviour
 {
     [SerializeField] private PlayerHealth _health;
+
     private Slider _slider;
+    private Coroutine _updateValue;
     private float _changeSpeed = 10;
 
     private void Start()
@@ -18,12 +20,12 @@ public class PlayerHealthView : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.OnHealthChanged += ChangeValue;
+        _health.HealthChanged += ChangeValue;
     }
 
     private void OnDisable()
     {
-        _health.OnHealthChanged -= ChangeValue;
+        _health.HealthChanged -= ChangeValue;
     }
 
     private void InitValues()
@@ -34,7 +36,10 @@ public class PlayerHealthView : MonoBehaviour
 
     private void ChangeValue()
     {
-        StartCoroutine(UpdateValue());
+        if(_updateValue != null)
+            StopCoroutine(_updateValue);
+
+        _updateValue = StartCoroutine(UpdateValue());
     }
 
     private IEnumerator UpdateValue()
