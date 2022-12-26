@@ -14,8 +14,16 @@ public class PlayerHealthView : MonoBehaviour
     {
         _slider = GetComponent<Slider>();
         InitValues();
+    }
 
-        _health.OnHealthChanged.AddListener(ChangeValue);
+    private void OnEnable()
+    {
+        _health.OnHealthChanged += ChangeValue;
+    }
+
+    private void OnDisable()
+    {
+        _health.OnHealthChanged -= ChangeValue;
     }
 
     private void InitValues()

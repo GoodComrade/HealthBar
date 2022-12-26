@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private float _healthAmount;
 
-    [DoNotSerialize] public UnityEvent OnHealthChanged;
+    public UnityAction OnHealthChanged;
 
     private float _maxHealth;
 
