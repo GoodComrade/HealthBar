@@ -5,25 +5,30 @@ using UnityEngine.UI;
 
 public class PlayerHealthView : MonoBehaviour
 {
+    [SerializeField] private PlayerHealth _health;
     private Slider _slider;
     private float _changeSpeed = 10;
 
-    private void Awake()
+    private void Start()
     {
         _slider = GetComponent<Slider>();
+        InitValues();
+        StartCoroutine(UpdateValue());
     }
 
-    public void InitValues(float maxValue)
+    private void InitValues()
     {
-        _slider.maxValue = maxValue;
-        _slider.value = maxValue;
+        _slider.maxValue = _health.MaxHealth;
+        _slider.value = _health.MaxHealth;
     }
 
-    public IEnumerator UpdateValue(float targetValue)
+    public IEnumerator UpdateValue()
     {
-        while(_slider.value != targetValue)
+        while(true)
         {
-            _slider.value = Mathf.MoveTowards(_slider.value, targetValue, Time.deltaTime * _changeSpeed);
+            if(_slider.value != _health.HealthAmount)
+                _slider.value = Mathf.MoveTowards(_slider.value, _health.HealthAmount, Time.deltaTime * _changeSpeed);
+
             yield return null;
         }
     }
